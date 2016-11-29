@@ -129,6 +129,7 @@
             this.txtCaption.Name = "txtCaption";
             this.txtCaption.Size = new System.Drawing.Size(162, 20);
             this.txtCaption.TabIndex = 5;
+            this.txtCaption.TextChanged += new System.EventHandler(this.txtCaption_TextChanged);
             // 
             // txtDateTaken
             // 

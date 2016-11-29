@@ -81,5 +81,10 @@ namespace MyPhotoControls
             Photo = photo;
             ResetDialog();
         }
+
+        private void txtCaption_TextChanged(object sender, EventArgs e)
+        {
+            Text = txtCaption.Text + " - Properties";
+        }
     }
 }
