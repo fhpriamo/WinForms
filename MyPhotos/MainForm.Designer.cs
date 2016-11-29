@@ -39,6 +39,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuViewNext = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewPrevious = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuViewPixelData = new System.Windows.Forms.ToolStripMenuItem();
             this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -67,8 +69,7 @@
             this.statusImageSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAlbumPos = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuViewPixelData = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPhotoProps = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoto)).BeginInit();
             this.ctxMenuPhoto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -97,9 +98,10 @@
             this.menuViewNext,
             this.menuViewPrevious,
             this.toolStripSeparator5,
-            this.menuViewPixelData});
+            this.menuViewPixelData,
+            this.menuPhotoProps});
             this.ctxMenuPhoto.Name = "ctxMenuPhoto";
-            this.ctxMenuPhoto.Size = new System.Drawing.Size(193, 104);
+            this.ctxMenuPhoto.Size = new System.Drawing.Size(193, 148);
             this.ctxMenuPhoto.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuPhoto_Opening);
             // 
             // menuImage
@@ -159,6 +161,19 @@
             this.menuViewPrevious.Size = new System.Drawing.Size(192, 22);
             this.menuViewPrevious.Text = "&Previous";
             this.menuViewPrevious.Click += new System.EventHandler(this.menuViewPrevious_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(189, 6);
+            // 
+            // menuViewPixelData
+            // 
+            this.menuViewPixelData.Name = "menuViewPixelData";
+            this.menuViewPixelData.Size = new System.Drawing.Size(192, 22);
+            this.menuViewPixelData.Text = "Pi&xel Data";
+            this.menuViewPixelData.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.menuViewPixelData.Click += new System.EventHandler(this.menuViewPixelData_Click);
             // 
             // menuView
             // 
@@ -410,18 +425,12 @@
             this.saveFileDialog1.RestoreDirectory = true;
             this.saveFileDialog1.Title = "Save Album";
             // 
-            // toolStripSeparator5
+            // menuPhotoProps
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(189, 6);
-            // 
-            // menuViewPixelData
-            // 
-            this.menuViewPixelData.Name = "menuViewPixelData";
-            this.menuViewPixelData.Size = new System.Drawing.Size(192, 22);
-            this.menuViewPixelData.Text = "Pi&xel Data";
-            this.menuViewPixelData.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.menuViewPixelData.Click += new System.EventHandler(this.menuViewPixelData_Click);
+            this.menuPhotoProps.Name = "menuPhotoProps";
+            this.menuPhotoProps.Size = new System.Drawing.Size(192, 22);
+            this.menuPhotoProps.Text = "Pho&to Properties";
+            this.menuPhotoProps.Click += new System.EventHandler(this.menuPhotoProps_Click);
             // 
             // MainForm
             // 
@@ -486,6 +495,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem menuViewPixelData;
+        private System.Windows.Forms.ToolStripMenuItem menuPhotoProps;
     }
 }
 

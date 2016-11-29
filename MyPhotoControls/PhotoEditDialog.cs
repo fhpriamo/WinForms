@@ -19,7 +19,7 @@ namespace MyPhotoControls
             InitializeComponent();
         }
 
-        protected PhotoEditDialog(Photograph photo) : this()
+        public PhotoEditDialog(Photograph photo) : this()
         {
             if (photo == null)
                 throw new ArgumentNullException("photo argument cannot be null.");
@@ -27,7 +27,7 @@ namespace MyPhotoControls
             InitializeDialog(photo);
         }
 
-        protected PhotoEditDialog(AlbumManager manager) : this()
+        public PhotoEditDialog(AlbumManager manager) : this()
         {
             if (manager == null)
                 throw new ArgumentNullException("manager paramenter cannot be null.");

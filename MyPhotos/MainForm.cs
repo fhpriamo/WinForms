@@ -352,6 +352,7 @@ namespace MyPhotos
         {
             menuViewNext.Enabled= (Manager.Index < Manager.Album.Count - 1);
             menuViewPrevious.Enabled = (Manager.Index > 0);
+            menuPhotoProps.Enabled = (Manager.Current != null);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -394,6 +395,21 @@ namespace MyPhotos
         private void pbxPhoto_MouseMove(object sender, MouseEventArgs e)
         {
             UpdatePixelDialog(e.X, e.Y);
+        }
+
+        private void menuPhotoProps_Click(object sender, EventArgs e)
+        {
+            if (Manager.Current == null)
+                return;
+
+            using (var dlg = new PhotoEditDialog(Manager))
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    DisplayAlbum();
+                }
+            }
+
         }
     }
 }
