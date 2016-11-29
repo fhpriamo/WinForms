@@ -16,5 +16,15 @@ namespace MyPhotoControls
         {
             InitializeComponent();
         }
+
+        protected virtual void ResetDialog()
+        {
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetDialog();
+        }
     }
 }
