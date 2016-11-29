@@ -152,7 +152,6 @@
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "&Notes:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtNotes
             // 
