@@ -14,6 +14,20 @@ namespace MyPhotoControls
         private Photograph Photo { get; set; }
         private AlbumManager Manager { get; set; }
 
+        private static class CurrentDate
+        {
+            public static DateTime Parse(string input)
+            {
+                DateTime result = DateTime.Parse(input);
+                if (result > DateTime.Now)
+                {
+                    throw new FormatException("The given date is in the future.");
+                }
+
+                return result;
+            }
+        }
+
         protected PhotoEditDialog()
         {
             InitializeComponent();
@@ -42,7 +56,7 @@ namespace MyPhotoControls
             {
                 txtPhotoFile.Text = Photo.FileName;
                 txtCaption.Text = Photo.Caption;
-                txtDateTaken.Text = Photo.DateTaken.ToString();
+                mskDateTaken.Text = Photo.DateTaken.ToString();
                 txtPhotographer.Text = Photo.Photographer;
                 txtNotes.Text = Photo.Notes;
             }
@@ -67,7 +81,7 @@ namespace MyPhotoControls
                 // On parse error, do not set date
                 try
                 {
-                    Photo.DateTaken = DateTime.Parse(txtDateTaken.Text);
+                    Photo.DateTaken = DateTime.Parse(mskDateTaken.Text);
                 }
                 catch (FormatException)
                 {
@@ -78,6 +92,7 @@ namespace MyPhotoControls
 
         private void InitializeDialog(Photograph photo)
         {
+            mskDateTaken.ValidatingType = typeof(CurrentDate);
             Photo = photo;
             ResetDialog();
         }
@@ -85,6 +100,15 @@ namespace MyPhotoControls
         private void txtCaption_TextChanged(object sender, EventArgs e)
         {
             Text = txtCaption.Text + " - Properties";
+        }
+
+        private void mskDateTaken_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
+        {
+            if (!e.IsValidInput)
+            {
+                DialogResult result = MessageBox.Show("The Date Taken entry is invalid or in the future and may be ignored. Do you want to correct this?", "Photo Properties", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                e.Cancel = (result == DialogResult.Yes);
+            }
         }
     }
 }
