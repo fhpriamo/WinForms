@@ -44,6 +44,23 @@ namespace MyPhotoAlbum
             }
         }
 
+        public enum DescriptorOption { FileName, Caption, DateTaken }
+
+        public PhotoAlbum()
+        {
+            ClearSettings();
+        }
+
+        public string Title { get; set; }
+        public DescriptorOption Descriptor { get; set; }
+        public string Password { get; set; }
+
+        private void ClearSettings()
+        {
+            Title = null;
+            Descriptor = DescriptorOption.Caption;
+        }
+
         public Photograph Add(string fileName)
         {
             Photograph p = new Photograph(fileName);
@@ -53,6 +70,7 @@ namespace MyPhotoAlbum
 
         public void Dispose()
         {
+            ClearSettings();
             foreach (Photograph p in this)
                 p.Dispose();
         }
@@ -67,6 +85,30 @@ namespace MyPhotoAlbum
             }
             
         }
+
+        public string GetDescription(Photograph photo)
+        {
+            switch (Descriptor)
+            {
+                case DescriptorOption.Caption:
+                    return photo.Caption;
+
+                case DescriptorOption.DateTaken:
+                    return photo.DateTaken.ToShortDateString();
+
+                case DescriptorOption.FileName:
+                    return photo.FileName;
+            }
+
+            throw new ArgumentException("Unrecognized photo descriptor option.");
+        }
+
+        public string GetDescription(int index)
+        {
+            return GetDescription(this[index]);
+        }
+
+
 
         protected override void InsertItem(int index, Photograph item)
         {
