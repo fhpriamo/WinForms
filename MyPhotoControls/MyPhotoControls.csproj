@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlbumEditDialog.Designer.cs">
+      <DependentUpon>AlbumEditDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AlbumEditDialog.resx">
+      <DependentUpon>AlbumEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseEditDialog.resx">
       <DependentUpon>BaseEditDialog.cs</DependentUpon>
     </EmbeddedResource>

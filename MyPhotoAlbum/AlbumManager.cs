@@ -28,6 +28,8 @@ namespace MyPhotoAlbum
             get { return album; }
         }
 
+        public string Password { get; set; }
+
         public string FullName
         {
             get { return name; }
