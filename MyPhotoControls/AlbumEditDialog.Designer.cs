@@ -43,8 +43,10 @@
             this.txtConfirm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -160,6 +162,7 @@
             this.txtPassword.TabIndex = 6;
             this.toolTip1.SetToolTip(this.txtPassword, "Password for the album");
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // lblConfirm
             // 
@@ -182,6 +185,7 @@
             this.txtConfirm.TabIndex = 8;
             this.toolTip1.SetToolTip(this.txtConfirm, "Confirms the password for the album");
             this.txtConfirm.UseSystemPasswordChar = true;
+            this.txtConfirm.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirm_Validating);
             // 
             // label3
             // 
@@ -194,6 +198,10 @@
             this.label3.Text = "Confir&m Password:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label3.Click += new System.EventHandler(this.lblConfirm_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AlbumEditDialog
             // 
@@ -217,6 +225,7 @@
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +247,6 @@
         private System.Windows.Forms.TextBox txtConfirm;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

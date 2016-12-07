@@ -130,5 +130,29 @@ namespace MyPhotoControls
         {
             Text = txtTitle.Text + " - Album Properties";
         }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtPassword.TextLength > 0)
+            {
+                errorProvider1.SetError(txtPassword, "");
+            }
+            else
+            {
+                errorProvider1.SetError(txtPassword, "The assigned password cannot be blank");
+            }
+        }
+    
+        private void txtConfirm_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtConfirm.Text == txtPassword.Text)
+            {
+                errorProvider1.SetError(txtConfirm, "");
+            }
+            else
+            {
+                errorProvider1.SetError(txtConfirm, "The password and confirmation entries do not match");
+            }
+        }
     }
 }
