@@ -353,6 +353,7 @@ namespace MyPhotos
             menuViewNext.Enabled= (Manager.Index < Manager.Album.Count - 1);
             menuViewPrevious.Enabled = (Manager.Index > 0);
             menuPhotoProps.Enabled = (Manager.Current != null);
+            menuAlbumProps.Enabled = (Manager.Album != null);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -410,6 +411,20 @@ namespace MyPhotos
                 }
             }
 
+        }
+
+        private void menuAlbumProps_Click(object sender, EventArgs e)
+        {
+            if (Manager.Album == null)
+                return;
+
+            using (AlbumEditDialog dlg = new AlbumEditDialog(Manager))
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    DisplayAlbum();
+                }
+            }
         }
     }
 }

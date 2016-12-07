@@ -41,6 +41,7 @@
             this.menuViewPrevious = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuViewPixelData = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPhotoProps = new System.Windows.Forms.ToolStripMenuItem();
             this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -69,7 +70,7 @@
             this.statusImageSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAlbumPos = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.menuPhotoProps = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAlbumProps = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoto)).BeginInit();
             this.ctxMenuPhoto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -99,9 +100,11 @@
             this.menuViewPrevious,
             this.toolStripSeparator5,
             this.menuViewPixelData,
-            this.menuPhotoProps});
+            this.menuPhotoProps,
+            this.menuAlbumProps});
             this.ctxMenuPhoto.Name = "ctxMenuPhoto";
-            this.ctxMenuPhoto.Size = new System.Drawing.Size(193, 148);
+            this.ctxMenuPhoto.OwnerItem = this.menuView;
+            this.ctxMenuPhoto.Size = new System.Drawing.Size(193, 170);
             this.ctxMenuPhoto.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuPhoto_Opening);
             // 
             // menuImage
@@ -174,6 +177,13 @@
             this.menuViewPixelData.Text = "Pi&xel Data";
             this.menuViewPixelData.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.menuViewPixelData.Click += new System.EventHandler(this.menuViewPixelData_Click);
+            // 
+            // menuPhotoProps
+            // 
+            this.menuPhotoProps.Name = "menuPhotoProps";
+            this.menuPhotoProps.Size = new System.Drawing.Size(192, 22);
+            this.menuPhotoProps.Text = "Pho&to Properties";
+            this.menuPhotoProps.Click += new System.EventHandler(this.menuPhotoProps_Click);
             // 
             // menuView
             // 
@@ -425,12 +435,12 @@
             this.saveFileDialog1.RestoreDirectory = true;
             this.saveFileDialog1.Title = "Save Album";
             // 
-            // menuPhotoProps
+            // menuAlbumProps
             // 
-            this.menuPhotoProps.Name = "menuPhotoProps";
-            this.menuPhotoProps.Size = new System.Drawing.Size(192, 22);
-            this.menuPhotoProps.Text = "Pho&to Properties";
-            this.menuPhotoProps.Click += new System.EventHandler(this.menuPhotoProps_Click);
+            this.menuAlbumProps.Name = "menuAlbumProps";
+            this.menuAlbumProps.Size = new System.Drawing.Size(192, 22);
+            this.menuAlbumProps.Text = "Albu&m Properties";
+            this.menuAlbumProps.Click += new System.EventHandler(this.menuAlbumProps_Click);
             // 
             // MainForm
             // 
@@ -496,6 +506,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem menuViewPixelData;
         private System.Windows.Forms.ToolStripMenuItem menuPhotoProps;
+        private System.Windows.Forms.ToolStripMenuItem menuAlbumProps;
     }
 }
 
