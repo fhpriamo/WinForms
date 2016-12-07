@@ -103,8 +103,7 @@
             this.menuPhotoProps,
             this.menuAlbumProps});
             this.ctxMenuPhoto.Name = "ctxMenuPhoto";
-            this.ctxMenuPhoto.OwnerItem = this.menuView;
-            this.ctxMenuPhoto.Size = new System.Drawing.Size(193, 170);
+            this.ctxMenuPhoto.Size = new System.Drawing.Size(193, 148);
             this.ctxMenuPhoto.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuPhoto_Opening);
             // 
             // menuImage
@@ -450,10 +449,12 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pbxPhoto);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MyPhoto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoto)).EndInit();
             this.ctxMenuPhoto.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);

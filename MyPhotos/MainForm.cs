@@ -426,5 +426,20 @@ namespace MyPhotos
                 }
             }
         }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '+':
+                    menuViewNext.PerformClick();
+                    e.Handled = true;
+                    break;
+                case '-':
+                    menuViewPrevious.PerformClick();
+                    e.Handled = true;
+                    break;
+            }
+        }
     }
 }
