@@ -441,5 +441,21 @@ namespace MyPhotos
                     break;
             }
         }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.PageUp:
+                    menuViewPrevious.PerformClick();
+                    e.Handled = true;
+                    break;
+                case Keys.PageDown:
+                    menuViewNext.PerformClick();
+                    e.Handled = true;
+                    break;
+            }
+            
+        }
     }
 }
