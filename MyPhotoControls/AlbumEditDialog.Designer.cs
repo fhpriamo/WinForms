@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAlbumFile = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbtnFileName = new System.Windows.Forms.RadioButton();
-            this.rbtnCaption = new System.Windows.Forms.RadioButton();
             this.rbtnDateTaken = new System.Windows.Forms.RadioButton();
+            this.rbtnCaption = new System.Windows.Forms.RadioButton();
+            this.rbtnFileName = new System.Windows.Forms.RadioButton();
             this.cbxPassword = new System.Windows.Forms.CheckBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblConfirm = new System.Windows.Forms.Label();
             this.txtConfirm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +82,7 @@
             this.txtAlbumFile.ReadOnly = true;
             this.txtAlbumFile.Size = new System.Drawing.Size(175, 20);
             this.txtAlbumFile.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtAlbumFile, "Album file name");
             // 
             // txtTitle
             // 
@@ -87,6 +90,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(175, 20);
             this.txtTitle.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtTitle, "Title for the album");
             this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
             // groupBox1
@@ -101,16 +105,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phot&o Description";
             // 
-            // rbtnFileName
+            // rbtnDateTaken
             // 
-            this.rbtnFileName.AutoSize = true;
-            this.rbtnFileName.Location = new System.Drawing.Point(16, 20);
-            this.rbtnFileName.Name = "rbtnFileName";
-            this.rbtnFileName.Size = new System.Drawing.Size(70, 17);
-            this.rbtnFileName.TabIndex = 0;
-            this.rbtnFileName.TabStop = true;
-            this.rbtnFileName.Text = "File &name";
-            this.rbtnFileName.UseVisualStyleBackColor = true;
+            this.rbtnDateTaken.AutoSize = true;
+            this.rbtnDateTaken.Location = new System.Drawing.Point(160, 20);
+            this.rbtnDateTaken.Name = "rbtnDateTaken";
+            this.rbtnDateTaken.Size = new System.Drawing.Size(82, 17);
+            this.rbtnDateTaken.TabIndex = 2;
+            this.rbtnDateTaken.TabStop = true;
+            this.rbtnDateTaken.Text = "&Date Taken";
+            this.rbtnDateTaken.UseVisualStyleBackColor = true;
             // 
             // rbtnCaption
             // 
@@ -123,36 +127,38 @@
             this.rbtnCaption.Text = "Ca&ption";
             this.rbtnCaption.UseVisualStyleBackColor = true;
             // 
-            // rbtnDateTaken
+            // rbtnFileName
             // 
-            this.rbtnDateTaken.AutoSize = true;
-            this.rbtnDateTaken.Location = new System.Drawing.Point(160, 20);
-            this.rbtnDateTaken.Name = "rbtnDateTaken";
-            this.rbtnDateTaken.Size = new System.Drawing.Size(82, 17);
-            this.rbtnDateTaken.TabIndex = 2;
-            this.rbtnDateTaken.TabStop = true;
-            this.rbtnDateTaken.Text = "&Date Taken";
-            this.rbtnDateTaken.UseVisualStyleBackColor = true;
+            this.rbtnFileName.AutoSize = true;
+            this.rbtnFileName.Location = new System.Drawing.Point(16, 20);
+            this.rbtnFileName.Name = "rbtnFileName";
+            this.rbtnFileName.Size = new System.Drawing.Size(70, 17);
+            this.rbtnFileName.TabIndex = 0;
+            this.rbtnFileName.TabStop = true;
+            this.rbtnFileName.Text = "File &name";
+            this.rbtnFileName.UseVisualStyleBackColor = true;
             // 
             // cbxPassword
             // 
             this.cbxPassword.AutoSize = true;
-            this.cbxPassword.Location = new System.Drawing.Point(13, 144);
+            this.cbxPassword.Location = new System.Drawing.Point(12, 144);
             this.cbxPassword.Name = "cbxPassword";
             this.cbxPassword.Size = new System.Drawing.Size(124, 17);
             this.cbxPassword.TabIndex = 5;
             this.cbxPassword.Text = "Pass&word Protected:";
             this.cbxPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.cbxPassword, "Whether to encrypt the file on disk");
             this.cbxPassword.UseVisualStyleBackColor = true;
             this.cbxPassword.CheckedChanged += new System.EventHandler(this.cbxPassword_CheckedChanged);
             // 
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(134, 142);
+            this.txtPassword.Location = new System.Drawing.Point(142, 142);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(134, 20);
+            this.txtPassword.Size = new System.Drawing.Size(126, 20);
             this.txtPassword.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.txtPassword, "Password for the album");
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblConfirm
@@ -170,17 +176,18 @@
             // txtConfirm
             // 
             this.txtConfirm.Enabled = false;
-            this.txtConfirm.Location = new System.Drawing.Point(134, 167);
+            this.txtConfirm.Location = new System.Drawing.Point(142, 167);
             this.txtConfirm.Name = "txtConfirm";
-            this.txtConfirm.Size = new System.Drawing.Size(134, 20);
+            this.txtConfirm.Size = new System.Drawing.Size(126, 20);
             this.txtConfirm.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.txtConfirm, "Confirms the password for the album");
             this.txtConfirm.UseSystemPasswordChar = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(40, 170);
+            this.label3.Location = new System.Drawing.Point(37, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 7;
@@ -230,5 +237,6 @@
         private System.Windows.Forms.Label lblConfirm;
         private System.Windows.Forms.TextBox txtConfirm;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
