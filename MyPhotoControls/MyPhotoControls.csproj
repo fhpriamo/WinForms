@@ -54,6 +54,9 @@
     <Compile Include="BaseEditDialog.Designer.cs">
       <DependentUpon>BaseEditDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlybyTextProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PhotoEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>

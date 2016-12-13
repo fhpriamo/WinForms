@@ -23,6 +23,9 @@ namespace MyPhotos
 
             NewAlbum();
             //SetTitle();
+
+            // Example of explicitly using a provider method (this could've been done on the properties window of VS)
+            flybyProvider.SetFlybyText(menuFileSave, "Save the current album.");
         }
 
         private void NewAlbum()
