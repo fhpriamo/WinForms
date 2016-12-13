@@ -241,10 +241,27 @@ namespace MyPhotos
                 // Open the new album
 
                 string path = openFileDialog1.FileName;
-                
+                string pwd = null;
+
+                // Get password if encrypted
+                if (AlbumStorage.IsEncrypted(path))
+                {
+                    using (AlbumPasswordDialog pwdDlg = new AlbumPasswordDialog())
+                    {
+                        pwdDlg.Album = path;
+                        if (pwdDlg.ShowDialog() != DialogResult.OK)
+                            return; // Open cancelled
+                        pwd = pwdDlg.Password;
+                    }
+                }
+
+                // Close existing album
+                if (!SaveAndCloseAlbum())
+                    return; // Close cancelled
+
                 try
                 {
-                    Manager = new AlbumManager(path);
+                    Manager = new AlbumManager(path, pwd);
                 }
                 catch (AlbumStorageException asex)
                 {

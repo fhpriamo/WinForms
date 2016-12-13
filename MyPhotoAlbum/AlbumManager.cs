@@ -102,6 +102,13 @@ namespace MyPhotoAlbum
             defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Albums";
         }
 
+        public AlbumManager(string name, string pwd) : this()
+        {
+            this.name = name;
+            album = AlbumStorage.ReadAlbum(name, pwd);
+            Password = pwd;
+        }
+
         public AlbumManager()
         {
             album = new PhotoAlbum();
@@ -121,9 +128,8 @@ namespace MyPhotoAlbum
         public void Save()
         {
             if (FullName == null)
-                throw new InvalidOperationException(
-                    "Unable to save album with no name");
-            AlbumStorage.WriteAlbum(Album, FullName);
+                throw new InvalidOperationException("Unable to save album with no name");
+            AlbumStorage.WriteAlbum(Album, FullName, Password);
         }
 
         public void Save(string name, bool overwrite)
@@ -139,7 +145,7 @@ namespace MyPhotoAlbum
                     "An album with this name exists");
             }
 
-            AlbumStorage.WriteAlbum(Album, name);
+            AlbumStorage.WriteAlbum(Album, name, Password);
             FullName = name;
         }
 
