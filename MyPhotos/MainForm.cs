@@ -91,32 +91,11 @@ namespace MyPhotos
 
         private bool SaveAndCloseAlbum()
         {
-            if (Manager.Album.HasChanged)
-            {
-                // Offer to save the current album
-                string msg;
-
-                if (string.IsNullOrEmpty(Manager.FullName))
-                {
-                    msg = "Do you wish to save your changes?";
-                }
-                else
-                {
-                    msg = String.Format("Do you wish to save your changes to \n{0}?", Manager.FullName);
-                }
-
-                DialogResult result = MessageBox.Show(this, msg, "Save Changes?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    SaveAlbum();
-                }
-                else if (result == DialogResult.Cancel)
-                {
-                    return false; // do not close
-                }
-                    
-            }
+            DialogResult result = AlbumController.AskForSave(Manager);
+            if (result == DialogResult.Yes)
+                SaveAlbum();
+            else if (result == DialogResult.Cancel)
+                return false; // do not close
 
             // Close the album and return true
             if (Manager.Album != null)
@@ -228,37 +207,16 @@ namespace MyPhotos
 
         private void menuFileOpen_Click(object sender, EventArgs e)
         {
-            openFileDialog1.InitialDirectory = AlbumManager.DefaultPath;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            string path = null;
+            string password = null;
+            if (AlbumController.OpenAlbumDialog(ref path, ref password))
             {
-                // TODO: save any existing album.
-
-                if (!SaveAndCloseAlbum())
-                {
-                    return;
-                }
-
-                // Open the new album
-
-                string path = openFileDialog1.FileName;
-                string pwd = null;
-
-                // Get password if encrypted
-                if (AlbumStorage.IsEncrypted(path))
-                {
-                    using (AlbumPasswordDialog pwdDlg = new AlbumPasswordDialog())
-                    {
-                        pwdDlg.Album = path;
-                        if (pwdDlg.ShowDialog() != DialogResult.OK)
-                            return; // Open cancelled
-                        pwd = pwdDlg.Password;
-                    }
-                }
-
                 // Close existing album
                 if (!SaveAndCloseAlbum())
+                {
                     return; // Close cancelled
-
+                }
+                    
                 try
                 {
                     Manager = new AlbumManager(path, pwd);
@@ -271,10 +229,7 @@ namespace MyPhotos
                 }
 
                 DisplayAlbum();
-                openFileDialog1.Dispose();
             }
-
-            openFileDialog1.Dispose();
         }
 
         private void menuFileSave_Click(object sender, EventArgs e)
@@ -284,7 +239,14 @@ namespace MyPhotos
 
         private void menuFileSaveAs_Click(object sender, EventArgs e)
         {
-            SaveAsAlbum();
+            string path = null;
+            if (AlbumController.SaveAlbumDialog(ref path))
+            {
+                // Save the album under the new name
+                SaveAlbum(path);
+                // Update title bar to include new name
+                SetTitleBar();
+            }
         }
 
         private void menuEditAdd_Click(object sender, EventArgs e)
