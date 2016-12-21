@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using MyPhotoAlbum;
+using System.Collections.Specialized;
 
 namespace MyPhotoControls
 {
@@ -33,6 +34,38 @@ namespace MyPhotoControls
             InitializeComponent();
         }
 
+        protected override void ResetDialog()
+        {
+            // Fill combo box with photographers in album
+            comboPhotographer.BeginUpdate();
+            comboPhotographer.Items.Clear();
+
+            if (Manager != null)
+            {
+                StringCollection coll = Manager.Photographers;
+                foreach (string s in coll)
+                    comboPhotographer.Items.Add(s);
+            }
+            else
+            {
+                comboPhotographer.Items.Add(Photo.Photographer);
+            }
+
+            comboPhotographer.EndUpdate();
+
+            // Initialize form contents
+            Photograph photo = Photo;
+
+            if (photo != null)
+            {
+                txtPhotoFile.Text = photo.FileName;
+                txtCaption.Text = photo.Caption;
+                mskDateTaken.Text = photo.DateTaken.ToString();
+                comboPhotographer.Text = photo.Photographer;
+                txtNotes.Text = photo.Notes;
+            }
+        }
+
         public PhotoEditDialog(Photograph photo) : this()
         {
             if (photo == null)
@@ -50,18 +83,6 @@ namespace MyPhotoControls
             InitializeDialog(Manager.Current);
         }
 
-        protected override void ResetDialog()
-        {
-            if (Photo != null)
-            {
-                txtPhotoFile.Text = Photo.FileName;
-                txtCaption.Text = Photo.Caption;
-                mskDateTaken.Text = Photo.DateTaken.ToString();
-                txtPhotographer.Text = Photo.Photographer;
-                txtNotes.Text = Photo.Notes;
-            }
-        }
-
         protected override void OnClosing(CancelEventArgs e)
         {
             if (DialogResult == DialogResult.OK)
@@ -75,7 +96,7 @@ namespace MyPhotoControls
             if (Photo != null)
             {
                 Photo.Caption = txtCaption.Text;
-                Photo.Photographer = txtPhotographer.Text;
+                Photo.Photographer = comboPhotographer.Text;
                 Photo.Notes = txtNotes.Text;
 
                 // On parse error, do not set date
@@ -109,6 +130,13 @@ namespace MyPhotoControls
                 DialogResult result = MessageBox.Show("The Date Taken entry is invalid or in the future and may be ignored. Do you want to correct this?", "Photo Properties", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 e.Cancel = (result == DialogResult.Yes);
             }
+        }
+
+        private void comboPhotographer_Leave(object sender, EventArgs e)
+        {
+            string person = comboPhotographer.Text;
+            if (!comboPhotographer.Items.Contains(person))
+                comboPhotographer.Items.Add(person);
         }
     }
 }

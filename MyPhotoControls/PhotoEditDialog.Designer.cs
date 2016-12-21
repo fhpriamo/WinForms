@@ -35,10 +35,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPhotoFile = new System.Windows.Forms.TextBox();
             this.txtCaption = new System.Windows.Forms.TextBox();
-            this.txtPhotographer = new System.Windows.Forms.TextBox();
             this.mskDateTaken = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
+            this.comboPhotographer = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tablePanel.SuspendLayout();
             this.SuspendLayout();
@@ -58,8 +58,8 @@
             this.tablePanel.Controls.Add(this.label4, 0, 3);
             this.tablePanel.Controls.Add(this.txtPhotoFile, 1, 0);
             this.tablePanel.Controls.Add(this.txtCaption, 1, 1);
-            this.tablePanel.Controls.Add(this.txtPhotographer, 1, 3);
             this.tablePanel.Controls.Add(this.mskDateTaken, 1, 2);
+            this.tablePanel.Controls.Add(this.comboPhotographer, 1, 3);
             this.tablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablePanel.Location = new System.Drawing.Point(0, 0);
             this.tablePanel.Name = "tablePanel";
@@ -131,13 +131,6 @@
             this.txtCaption.TabIndex = 3;
             this.txtCaption.TextChanged += new System.EventHandler(this.txtCaption_TextChanged);
             // 
-            // txtPhotographer
-            // 
-            this.txtPhotographer.Location = new System.Drawing.Point(93, 75);
-            this.txtPhotographer.Name = "txtPhotographer";
-            this.txtPhotographer.Size = new System.Drawing.Size(162, 20);
-            this.txtPhotographer.TabIndex = 7;
-            // 
             // mskDateTaken
             // 
             this.mskDateTaken.Location = new System.Drawing.Point(93, 51);
@@ -165,6 +158,19 @@
             this.txtNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNotes.Size = new System.Drawing.Size(260, 86);
             this.txtNotes.TabIndex = 4;
+            // 
+            // comboPhotographer
+            // 
+            this.comboPhotographer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboPhotographer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboPhotographer.FormattingEnabled = true;
+            this.comboPhotographer.Location = new System.Drawing.Point(93, 75);
+            this.comboPhotographer.MaxDropDownItems = 4;
+            this.comboPhotographer.Name = "comboPhotographer";
+            this.comboPhotographer.Size = new System.Drawing.Size(162, 21);
+            this.comboPhotographer.Sorted = true;
+            this.comboPhotographer.TabIndex = 7;
+            this.comboPhotographer.Leave += new System.EventHandler(this.comboPhotographer_Leave);
             // 
             // PhotoEditDialog
             // 
@@ -194,9 +200,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPhotoFile;
         private System.Windows.Forms.TextBox txtCaption;
-        private System.Windows.Forms.TextBox txtPhotographer;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.MaskedTextBox mskDateTaken;
+        private System.Windows.Forms.ComboBox comboPhotographer;
     }
 }

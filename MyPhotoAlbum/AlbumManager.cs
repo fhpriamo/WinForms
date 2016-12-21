@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
+using System.Collections.Specialized;
 
 namespace MyPhotoAlbum
 {
@@ -16,7 +17,8 @@ namespace MyPhotoAlbum
         private int pos = -1;
         private string name = string.Empty;
         private PhotoAlbum album;
-        
+        private StringCollection _photographers = null;
+
         static public string DefaultPath
         {
             get { return defaultPath; }
@@ -124,6 +126,29 @@ namespace MyPhotoAlbum
                 Index = 0;
             }
         }
+
+        public StringCollection Photographers
+        {
+            get
+            {
+                if (Album.HasChanged || _photographers == null)
+                {
+                    _photographers = new StringCollection();
+                    foreach (Photograph p in Album)
+                    {
+                        // Make sure we add each person only once
+                        string person = p.Photographer;
+                        if (person != null && person.Length > 0
+                        && !_photographers.Contains(person))
+                        {
+                            _photographers.Add(person);
+                        }
+                    }
+                }
+                return _photographers;
+            }
+        }
+
 
         public void Save()
         {
