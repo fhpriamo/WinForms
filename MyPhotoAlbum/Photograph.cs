@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyPhotoAlbum
 {
-    public class Photograph : IDisposable
+    public class Photograph : IDisposable, IFormattable
     {
         private string filename;
         private Bitmap bitmap;
@@ -154,6 +154,43 @@ namespace MyPhotoAlbum
         public void Dispose()
         {
             ReleaseImage();
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            if (String.IsNullOrEmpty(format))
+            {
+                 format = "f";
+            }
+
+            char first = format.ToLower()[0];
+
+            if (format.Length == 1)
+            {
+                switch (first)
+                {
+                    case 'c': return Caption;
+                    case 'd':
+                        return DateTaken.ToShortDateString();
+                    case 'f': return FileName;
+                }
+            }
+            else if (first == 'd')
+            {
+                return DateTaken.ToString(format.Substring(1), formatProvider);
+            }
+
+            throw new FormatException();
+        }
+
+        public string ToString(string format)
+        {
+            return ToString(format, null);
+        }
+
+        public string ToString(IFormatProvider fp)
+        {
+            return ToString(null, fp);
         }
     }
 }

@@ -68,6 +68,19 @@ namespace MyPhotoAlbum
             return p;
         }
 
+
+        public string GetDescriptorFormat()
+        {
+            switch (Descriptor)
+            {
+                case DescriptorOption.Caption: return "c";
+                case DescriptorOption.DateTaken: return "d";
+                case DescriptorOption.FileName:
+                default:
+                    return "f";
+            }
+        }
+
         public void Dispose()
         {
             ClearSettings();
