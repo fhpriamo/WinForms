@@ -170,5 +170,25 @@ namespace MyPhotoAlbum
             return File.Exists(name);
         }
 
+        public void MoveItemBackward(int index)
+        {
+            if (index <= 0 || index >= Album.Count)
+                throw new IndexOutOfRangeException();
+            // Remove photo and reinsert at prior position
+            Photograph photo = Album[index];
+            Album.RemoveAt(index);
+            Album.Insert(index - 1, photo);
+        }
+
+        public void MoveItemForward(int index)
+        {
+            if (index < 0 || index > Album.Count - 1)
+                throw new IndexOutOfRangeException();
+            // Remove photo and reinsert at subsequent pos
+            Photograph photo = Album[index];
+            Album.RemoveAt(index);
+            Album.Insert(index + 1, photo);
+        }
+
     }
 }
