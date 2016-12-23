@@ -15,20 +15,6 @@ namespace MyPhotoControls
         private Photograph Photo { get; set; }
         private AlbumManager Manager { get; set; }
 
-        private static class CurrentDate
-        {
-            public static DateTime Parse(string input)
-            {
-                DateTime result = DateTime.Parse(input);
-                if (result > DateTime.Now)
-                {
-                    throw new FormatException("The given date is in the future.");
-                }
-
-                return result;
-            }
-        }
-
         protected PhotoEditDialog()
         {
             InitializeComponent();
@@ -60,7 +46,7 @@ namespace MyPhotoControls
             {
                 txtPhotoFile.Text = photo.FileName;
                 txtCaption.Text = photo.Caption;
-                mskDateTaken.Text = photo.DateTaken.ToString();
+                dtpDateTaken.Value = photo.DateTaken;
                 comboPhotographer.Text = photo.Photographer;
                 txtNotes.Text = photo.Notes;
             }
@@ -99,21 +85,12 @@ namespace MyPhotoControls
                 Photo.Photographer = comboPhotographer.Text;
                 Photo.Notes = txtNotes.Text;
 
-                // On parse error, do not set date
-                try
-                {
-                    Photo.DateTaken = DateTime.Parse(mskDateTaken.Text);
-                }
-                catch (FormatException)
-                {
-
-                }
+                Photo.DateTaken = dtpDateTaken.Value;
             }
         }
 
         private void InitializeDialog(Photograph photo)
         {
-            mskDateTaken.ValidatingType = typeof(CurrentDate);
             Photo = photo;
             ResetDialog();
         }

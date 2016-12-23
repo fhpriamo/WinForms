@@ -219,7 +219,7 @@ namespace MyPhotos
                     
                 try
                 {
-                    Manager = new AlbumManager(path, pwd);
+                    Manager = new AlbumManager(path, password);
                 }
                 catch (AlbumStorageException asex)
                 {
