@@ -36,9 +36,9 @@
             this.txtPhotoFile = new System.Windows.Forms.TextBox();
             this.txtCaption = new System.Windows.Forms.TextBox();
             this.mskDateTaken = new System.Windows.Forms.MaskedTextBox();
+            this.comboPhotographer = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.comboPhotographer = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tablePanel.SuspendLayout();
             this.SuspendLayout();
@@ -140,6 +140,19 @@
             this.mskDateTaken.TabIndex = 5;
             this.mskDateTaken.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.mskDateTaken_TypeValidationCompleted);
             // 
+            // comboPhotographer
+            // 
+            this.comboPhotographer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboPhotographer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboPhotographer.FormattingEnabled = true;
+            this.comboPhotographer.Location = new System.Drawing.Point(93, 75);
+            this.comboPhotographer.MaxDropDownItems = 4;
+            this.comboPhotographer.Name = "comboPhotographer";
+            this.comboPhotographer.Size = new System.Drawing.Size(162, 21);
+            this.comboPhotographer.Sorted = true;
+            this.comboPhotographer.TabIndex = 7;
+            this.comboPhotographer.Leave += new System.EventHandler(this.comboPhotographer_Leave);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -158,19 +171,6 @@
             this.txtNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNotes.Size = new System.Drawing.Size(260, 86);
             this.txtNotes.TabIndex = 4;
-            // 
-            // comboPhotographer
-            // 
-            this.comboPhotographer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboPhotographer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboPhotographer.FormattingEnabled = true;
-            this.comboPhotographer.Location = new System.Drawing.Point(93, 75);
-            this.comboPhotographer.MaxDropDownItems = 4;
-            this.comboPhotographer.Name = "comboPhotographer";
-            this.comboPhotographer.Size = new System.Drawing.Size(162, 21);
-            this.comboPhotographer.Sorted = true;
-            this.comboPhotographer.TabIndex = 7;
-            this.comboPhotographer.Leave += new System.EventHandler(this.comboPhotographer_Leave);
             // 
             // PhotoEditDialog
             // 
