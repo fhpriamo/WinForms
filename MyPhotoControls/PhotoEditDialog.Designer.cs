@@ -146,6 +146,8 @@
             // 
             // dtpDateTaken
             // 
+            this.dtpDateTaken.CustomFormat = "MM/dd/yyyyy \'at\' HH:mm:ss";
+            this.dtpDateTaken.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateTaken.Location = new System.Drawing.Point(93, 51);
             this.dtpDateTaken.Name = "dtpDateTaken";
             this.dtpDateTaken.Size = new System.Drawing.Size(162, 20);
